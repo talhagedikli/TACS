@@ -19,23 +19,28 @@ public class PlayerBehaviour : MonoBehaviour
     {
 
         // Move player
+        Rigidbody ourRigidbody = GetComponent<Rigidbody>();
+        Vector3 inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        ourRigidbody.velocity = inputVector * speed;
+
 
         // Where to new position to move to
+        /* 
         float distanceToMove = speed * Time.deltaTime;
         Vector3 inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 movementVector = inputVector * distanceToMove;
-        Vector3 newPosition = transform.position + movementVector;
+        */
 
         // Face the new position
-        transform.LookAt(newPosition);
-        // Move to new position
-        transform.position = newPosition;
+        Vector3 lookAtPosition = transform.position + inputVector;
+        transform.LookAt(lookAtPosition);
+
+
 
         // Shoot bullet
         if (Input.GetButton("Fire1"))
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
-            
+            Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);
         }
     }
 }
