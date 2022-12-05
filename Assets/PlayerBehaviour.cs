@@ -8,14 +8,17 @@ public class PlayerBehaviour : MonoBehaviour
     // If you need to, do it in Start() instead
     public float speed;
     public GameObject bulletPrefab;
+    public float secondsBetweenShoots;
+
+    private float secondsSinceLastShoot;
     // Start is called before the first frame update
     void Start()
     {
-        
+        secondsSinceLastShoot = secondsBetweenShoots;
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
 
         // Move player
@@ -31,16 +34,24 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 movementVector = inputVector * distanceToMove;
         */
 
+        Ray rayFromCameraToCursor = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+        playerPlane.Raycast(rayFromCameraToCursor, out float distanceFromCamera);
+        Vector3 cursorPosition = rayFromCameraToCursor.GetPoint(distanceFromCamera);
+
         // Face the new position
-        Vector3 lookAtPosition = transform.position + inputVector;
+        Vector3 lookAtPosition = cursorPosition;
         transform.LookAt(lookAtPosition);
 
 
 
         // Shoot bullet
-        if (Input.GetButton("Fire1"))
+        secondsSinceLastShoot += Time.deltaTime;
+
+        if (secondsSinceLastShoot >= secondsBetweenShoots && Input.GetButton("Fire1"))
         {
             Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);
+            secondsSinceLastShoot = 0;
         }
     }
 }
