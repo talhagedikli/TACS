@@ -15,6 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         secondsSinceLastShoot = secondsBetweenShoots;
+        References.thePlayer = this.gameObject;
     }
 
     // Update is called once per frame
