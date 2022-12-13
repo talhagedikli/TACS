@@ -7,14 +7,11 @@ public class PlayerBehaviour : MonoBehaviour
     // Never set the value of a public variable here - the inspector override it without telling you
     // If you need to, do it in Start() instead
     public float speed;
-    public GameObject bulletPrefab;
-    public float secondsBetweenShoots;
-
-    private float secondsSinceLastShoot;
+    public WeponBehaviour myWepon;
+    
     // Start is called before the first frame update
     void Start()
     {
-        secondsSinceLastShoot = secondsBetweenShoots;
         References.thePlayer = this.gameObject;
     }
 
@@ -47,12 +44,10 @@ public class PlayerBehaviour : MonoBehaviour
 
 
         // Shoot bullet
-        secondsSinceLastShoot += Time.deltaTime;
-
-        if (secondsSinceLastShoot >= secondsBetweenShoots && Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);
-            secondsSinceLastShoot = 0;
+            // Tell our wepon to fire
+            myWepon.Fire(cursorPosition);
         }
     }
 }

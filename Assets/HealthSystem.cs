@@ -10,6 +10,8 @@ public class HealthSystem : MonoBehaviour
     public float maxHealth;
     public GameObject healthBarPrefab;
 
+    public GameObject deathEffectPrefab;
+
     // Private variables
     float currentHealth;
 
@@ -38,13 +40,21 @@ public class HealthSystem : MonoBehaviour
     // We should be able to call the method out of the script
     public void TakeDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            Destroy(gameObject);
+            currentHealth -= damageAmount;
+            if (currentHealth <= 0)
+            {
+                if (deathEffectPrefab != null)
+                {
+                    Instantiate(deathEffectPrefab, transform.position, transform.rotation);
+                }
+                Destroy(gameObject);
+            }
         }
     }
 
+    // Don't create sth in OnDestroy()
     private void OnDestroy() 
     {
         if (myHealthBar != null) 

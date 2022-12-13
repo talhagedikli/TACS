@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6750486787099597470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.67, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.73, y: 0.5494783, z: 0.73}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0278d1df8282df49ac9c4640f2d1f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2
 --- !u!54 &6750486787099597413
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,5 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26f77ea962e4bd4cba161bcf17763fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
   healthBarPrefab: {fileID: 6170156615664143753, guid: 0f00639971a7a5f4f91c60abde1fe447, type: 3}
+  deathEffectPrefab: {fileID: 5221860068720053427, guid: 69a128da2ae2d1745bd73f587d617070, type: 3}
