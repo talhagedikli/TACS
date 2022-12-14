@@ -36,16 +36,16 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\CanvasBehaviour.cs" />
-     <Compile Include="Assets\References.cs" />
-     <Compile Include="Assets\PlayerBehaviour.cs" />
-     <Compile Include="Assets\HealthSystem.cs" />
-     <Compile Include="Assets\EnemyBehaviour.cs" />
-     <Compile Include="Assets\BulletBehaviour.cs" />
-     <Compile Include="Assets\HealthBar.cs" />
-     <Compile Include="Assets\EnemySpawn.cs" />
-     <Compile Include="Assets\ExplosionBehaviour.cs" />
-     <Compile Include="Assets\WeponBehaviour.cs" />
+     <Compile Include="Assets\Scripts\WeponBehaviour.cs" />
+     <Compile Include="Assets\Scripts\ExplosionBehaviour.cs" />
+     <Compile Include="Assets\Scripts\CanvasBehaviour.cs" />
+     <Compile Include="Assets\Scripts\References.cs" />
+     <Compile Include="Assets\Scripts\PlayerBehaviour.cs" />
+     <Compile Include="Assets\Scripts\HealthSystem.cs" />
+     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
+     <Compile Include="Assets\Scripts\BulletBehaviour.cs" />
+     <Compile Include="Assets\Scripts\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawn.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
