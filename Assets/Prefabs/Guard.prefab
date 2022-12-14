@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2362748515105519844}
-  - component: {fileID: 2362748515105519843}
   - component: {fileID: 2362748515105519842}
   - component: {fileID: 2362748515105519845}
+  - component: {fileID: 4067592072466158953}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -35,24 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2362748515105519843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2362748515105519847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0278d1df8282df49ac9c4640f2d1f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  visionRange: 10
-  visionConeAngle: 35
-  alerted: 0
-  myLight: {fileID: 2362748516827124766}
-  turnSpeed: 1
 --- !u!54 &2362748515105519842
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84,6 +66,25 @@ MonoBehaviour:
   maxHealth: 10
   healthBarPrefab: {fileID: 6170156615664143753, guid: 0f00639971a7a5f4f91c60abde1fe447, type: 3}
   deathEffectPrefab: {fileID: 0}
+--- !u!114 &4067592072466158953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362748515105519847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80edc931dcc4388418e2d1519193f5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  ourRigidbody: {fileID: 0}
+  visionRange: 10
+  visionConeAngle: 35
+  alerted: 0
+  myLight: {fileID: 2362748516827124766}
+  turnSpeed: 1
 --- !u!1 &2362748515347234184
 GameObject:
   m_ObjectHideFlags: 0
