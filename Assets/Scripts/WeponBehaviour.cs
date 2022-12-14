@@ -33,11 +33,12 @@ public class WeponBehaviour : MonoBehaviour
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);
                 // Offset that target position by a random amount
                 float inaccuracy = Vector3.Distance(transform.position, targetPosition) / accuracy;
+                Vector3 inaccuratePosition = targetPosition;
                 // Target the position with some random values
-                targetPosition.x += Random.Range(-inaccuracy, inaccuracy);
-                targetPosition.z += Random.Range(-inaccuracy, inaccuracy);
+                inaccuratePosition.x += Random.Range(-inaccuracy, inaccuracy);
+                inaccuratePosition.z += Random.Range(-inaccuracy, inaccuracy);
                 // Set the bullet's direction to new position
-                newBullet.transform.LookAt(targetPosition);
+                newBullet.transform.LookAt(inaccuratePosition);
                 // Set the dynamic parameter to 0
                 secondsSinceLastShoot = 0;
             }

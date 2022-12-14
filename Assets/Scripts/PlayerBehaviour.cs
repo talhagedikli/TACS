@@ -7,12 +7,16 @@ public class PlayerBehaviour : MonoBehaviour
     // Never set the value of a public variable here - the inspector override it without telling you
     // If you need to, do it in Start() instead
     public float speed;
-    public WeponBehaviour myWepon;
+    public List<WeponBehaviour> wepons = new List<WeponBehaviour>();
+    public int selectedWeponIndex;
+    private Rigidbody ourRigidbody;
     
     // Start is called before the first frame update
     void Start()
     {
         References.thePlayer = this.gameObject;
+        ourRigidbody = GetComponent<Rigidbody>();
+        selectedWeponIndex = 0;
     }
 
     // Update is called once per frame
@@ -20,7 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
 
         // Move player
-        Rigidbody ourRigidbody = GetComponent<Rigidbody>();
+        // Rigidbody ourRigidbody = GetComponent<Rigidbody>(); Inıt in start()
         Vector3 inputVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         ourRigidbody.velocity = inputVector * speed;
 
@@ -34,13 +38,63 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 lookAtPosition = cursorPosition;
         transform.LookAt(lookAtPosition);
 
-
-
         // Fire with gun
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && wepons.Count > 0)
         {
+            WeponBehaviour currentWepon = wepons[selectedWeponIndex];
             // Tell our wepon to fire
-            myWepon.Fire(cursorPosition);
+            currentWepon.Fire(cursorPosition);
+        }
+        // Switch between guns
+        if (Input.GetButtonDown("Fire2"))
+        {
+            ChangeWeponIndex(selectedWeponIndex + 1);
+
+        }
+    }
+
+    private void ChangeWeponIndex(int index)
+    {
+        // Change index
+        selectedWeponIndex = index;
+        // If it's gone too far, loop back
+        if (selectedWeponIndex >= wepons.Count)
+        {
+            selectedWeponIndex = 0;
+        }
+
+        // For each wepon in our list
+        for (int i = 0; i < wepons.Count; i++)
+        {
+            WeponBehaviour iThWepon = wepons[i];
+            if (i == selectedWeponIndex)
+            {
+                // If it's the one we just selected, make it visible - enable it
+                iThWepon.gameObject.SetActive(true);
+            }
+            else
+            {
+                // If it's not, disable it
+                iThWepon.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    // Pick up a wepon
+    private void OnTriggerEnter(Collider other) 
+    {
+        WeponBehaviour theirWepon = other.GetComponentInParent<WeponBehaviour>();
+        if (theirWepon != null)
+        {
+            // Add it to our internal list
+            wepons.Add(theirWepon);
+            // Move it to our location
+            theirWepon.transform.position = transform.position;
+            theirWepon.transform.rotation = transform.rotation;
+            // Parent it to us, so it moves with us
+            theirWepon.transform.SetParent(transform);
+            // Select the currently picked wepon
+            ChangeWeponIndex(wepons.Count - 1);
         }
     }
 }
