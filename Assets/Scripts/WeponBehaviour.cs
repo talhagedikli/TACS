@@ -10,10 +10,13 @@ public class WeponBehaviour : MonoBehaviour
     public float secondsBetweenShoots;
     private float secondsSinceLastShoot;
     public float numberOfProjectiles;
+    public AudioSource audioSource;
+    public float kickAmount;
     // Start is called before the first frame update
     void Start()
     {
         secondsSinceLastShoot = secondsBetweenShoots;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +30,13 @@ public class WeponBehaviour : MonoBehaviour
     {
         if (secondsSinceLastShoot >= secondsBetweenShoots)
         {
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+            References.screenShake.joltVector = transform.forward * -1 * kickAmount;
             // Ready to fire
+            References.spawner.activated = true;
             for (int i = 0; i < numberOfProjectiles; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);

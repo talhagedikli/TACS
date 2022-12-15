@@ -7,11 +7,22 @@ public class HealthBar : MonoBehaviour
 {
 
     public Image filledPart;
+    public Image background;
 
     public void ShowHealthFraction(float fraction)
     {
         // Scales the fill part to the fraction part provided
         filledPart.rectTransform.localScale = new Vector3(fraction, 1, 1);
+        if (fraction < 1)
+        {
+            filledPart.enabled = true;
+            background.enabled = true;
+        }
+        else
+        {
+            filledPart.enabled = false;
+            background.enabled = false;
+        }
         
     }
 

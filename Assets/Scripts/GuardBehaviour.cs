@@ -42,15 +42,19 @@ public class GuardBehaviour : EnemyBehaviour
                 // Rotate
                 Vector3 lateralOffset = transform.right * Time.deltaTime * turnSpeed;
                 transform.LookAt(transform.position + transform.forward + lateralOffset);
-                ourRigidbody.velocity = transform.forward * speed;
+                // ourRigidbody.velocity = transform.forward * speed;
                 // Check if we can see the player
                 if (Vector3.Distance(transform.position, playerPosition) <= visionRange)
                 {
                     if (Vector3.Angle(transform.forward, vectorToPlayer) <= visionConeAngle)
                     {
-                        // First time we see the player
-                        alerted = true;
-                        References.spawner.activated = true;
+                        // Returns true if we hit something on that layer
+                        if (Physics.Raycast(transform.position, vectorToPlayer, vectorToPlayer.magnitude, References.wallsLayer) == false)
+                        {
+                            // First time we see the player
+                            alerted = true;
+                            References.spawner.activated = true;
+                        }
                     }
                     
                 }

@@ -18,7 +18,7 @@ public class BulletBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         // float distanceToMove = speed * Time.deltaTime;
         // transform.Translate(transform.forward * distanceToMove);
