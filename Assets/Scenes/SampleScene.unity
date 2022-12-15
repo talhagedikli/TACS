@@ -861,6 +861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joltVector: {x: 0, y: 0, z: 0}
   joltDecayFactor: 0.7
+  shakeAmount: 0
+  shakeDecayFactor: 0.9
   maxMoveSpeed: 200
 --- !u!1 &987111141
 GameObject:

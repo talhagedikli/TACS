@@ -38,18 +38,19 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\WeponBehaviour.cs" />
      <Compile Include="Assets\Scripts\ExplosionBehaviour.cs" />
+     <Compile Include="Assets\ScreenShake.cs" />
      <Compile Include="Assets\Scripts\CanvasBehaviour.cs" />
      <Compile Include="Assets\Scripts\References.cs" />
      <Compile Include="Assets\Scripts\PlayerBehaviour.cs" />
      <Compile Include="Assets\Scripts\HealthSystem.cs" />
      <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\Scripts\BulletBehaviour.cs" />
+     <Compile Include="Assets\OneShotSound.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\GuardBehaviour.cs" />
      <Compile Include="Assets\RailgunBeam.cs" />
-     <Compile Include="Assets\OneShotSound.cs" />
-     <Compile Include="Assets\ScreenShake.cs" />
+     <Compile Include="Assets\DeathEffect.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

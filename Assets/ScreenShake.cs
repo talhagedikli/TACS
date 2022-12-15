@@ -5,9 +5,14 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
     Vector3 normalPosition;
-    public Vector3 joltVector;
+    Vector3 desiredPosition;
 
+    public Vector3 joltVector;
     public float joltDecayFactor;
+
+    public float shakeAmount;
+    public float shakeDecayFactor;
+
     public float maxMoveSpeed;
 
     private void Awake() 
@@ -23,7 +28,18 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, normalPosition + joltVector, maxMoveSpeed * Time.deltaTime);
+        Vector3 shakeVector = new Vector3(GetRandomShakeAmount(), GetRandomShakeAmount(), GetRandomShakeAmount());
+        desiredPosition = normalPosition + joltVector + shakeVector;
+        // Set our position to the jolted position
+        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, maxMoveSpeed * Time.deltaTime);
+        
+        // Jolt vector decrases
         joltVector *= joltDecayFactor;
+        shakeAmount *= shakeDecayFactor;
+    }
+
+    float GetRandomShakeAmount()
+    {
+        return Random.Range(-shakeAmount, shakeAmount);
     }
 }
