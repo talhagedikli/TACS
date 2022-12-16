@@ -8,6 +8,7 @@ public class ExplosionBehaviour : MonoBehaviour
     private float secondsWeveBeenAlive;
     private Vector3 maxScale = Vector3.one * 5;
     public GameObject soundObject;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,7 @@ public class ExplosionBehaviour : MonoBehaviour
         if (theirHealthSystem != null)
         {
             // If we found take damage
-            theirHealthSystem.TakeDamage(10);
+            theirHealthSystem.TakeDamage(damage);
         }    
     }
 }

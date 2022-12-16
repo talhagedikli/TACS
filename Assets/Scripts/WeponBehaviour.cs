@@ -34,9 +34,11 @@ public class WeponBehaviour : MonoBehaviour
             {
                 audioSource.Play();
             }
-            References.screenShake.joltVector = transform.forward * -1 * kickAmount;
+            // References.screenShake.joltVector = transform.forward * -1 * kickAmount; is removed
+            // because we move camera, it looks like we are going forwards
+            References.screenShake.joltVector = transform.forward * kickAmount;
             // Ready to fire
-            References.spawner.activated = true;
+            References.levelManager.alarmSounded = true;
             for (int i = 0; i < numberOfProjectiles; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);

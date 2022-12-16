@@ -12,7 +12,11 @@ public class RailgunBeam : BulletBehaviour
     {
         // Fire a laser to see how far we can go before we hit the wall
         // out RaycastHit hitInfo : define a variable to strore info about what happened when the ray hit something
-        Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistanceToShoot, References.wallsLayer);
+        Physics.Raycast(transform.position, 
+                        transform.forward, 
+                        out RaycastHit hitInfo, 
+                        References.maxDistanceInALevel, 
+                        References.wallsLayer);
         float distanceToWall = hitInfo.distance;
         // Fire a new laser - only going to wall
         float beamThickness = 0.3f;

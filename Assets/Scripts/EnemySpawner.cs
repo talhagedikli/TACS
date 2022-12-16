@@ -9,11 +9,16 @@ public class EnemySpawner : MonoBehaviour
     public float secondsBetweenSpawns;
     private float secondsSinceLastSpawn;
 
-    public bool activated;
-    
-    private void Awake() 
-     {
-        References.spawner = this;
+    public int enemiesToSpawn;
+
+    private void OnEnable() 
+    {
+        References.spawners.Add(this);    
+    }
+
+    private void OnDisable() 
+    {
+        References.spawners.Remove(this);    
     }
 
     // Start is called before the first frame update
@@ -26,13 +31,14 @@ public class EnemySpawner : MonoBehaviour
     // So it's a good place for gameplay critical things
     private void FixedUpdate() 
     {
-        if (activated)
+        if (References.levelManager.alarmSounded && enemiesToSpawn > 0)
         {
             secondsSinceLastSpawn += Time.fixedDeltaTime;
             if (secondsSinceLastSpawn >= secondsBetweenSpawns)
             {
                 Instantiate(enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
                 secondsSinceLastSpawn = 0;
+                enemiesToSpawn -= 1;
             }
         } 
     }

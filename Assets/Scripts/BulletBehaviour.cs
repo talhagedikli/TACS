@@ -36,17 +36,12 @@ public class BulletBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision other) 
     {
         GameObject theirGameObject = other.gameObject;
-
-        if (theirGameObject.GetComponent<EnemyBehaviour>() != null)
+        HealthSystem theirHealthSystem = theirGameObject.GetComponent<HealthSystem>();
+        if (theirHealthSystem != null)
         {
-            HealthSystem theirHealthSystem = theirGameObject.GetComponent<HealthSystem>();
-            if (theirHealthSystem != null)
-            {
-                theirHealthSystem.TakeDamage(damage);
-            }
-
-            Destroy(gameObject);
+            theirHealthSystem.TakeDamage(damage);
         }
+        Destroy(gameObject);
     }
 
     
