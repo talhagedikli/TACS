@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        References.thePlayer = this.gameObject;
+        References.thePlayer = this;
         ourRigidbody = GetComponent<Rigidbody>();
         selectedWeponIndex = 0;
     }
@@ -51,6 +51,36 @@ public class PlayerBehaviour : MonoBehaviour
             ChangeWeponIndex(selectedWeponIndex + 1);
 
         }
+
+        if (Input.GetButtonDown("Use"))
+        {
+            // Use the nearest useable
+            Useable nearestUseable = null;
+            // Set the max range
+            float nearestDistance = 2;
+            foreach (Useable useable in References.usables)
+            {
+                // How far is this one from the player?
+                float distance = Vector3.Distance(transform.position, useable.transform.position);
+                // If that closer than anything else we've found?
+                if (distance <= nearestDistance)
+                {
+                    // It is - remember that this is now the closest one we've found
+                    nearestUseable = useable;
+                    nearestDistance = distance;
+                }
+            }
+
+            if (nearestUseable != null)
+            {
+                nearestUseable.Use();
+            }
+        }
+    }
+
+    public void SelectLatestWepon()
+    {
+        ChangeWeponIndex(wepons.Count - 1);
     }
 
     private void ChangeWeponIndex(int index)
@@ -83,18 +113,18 @@ public class PlayerBehaviour : MonoBehaviour
     // Pick up a wepon
     private void OnTriggerEnter(Collider other) 
     {
-        WeponBehaviour theirWepon = other.GetComponentInParent<WeponBehaviour>();
-        if (theirWepon != null)
-        {
-            // Add it to our internal list
-            wepons.Add(theirWepon);
-            // Move it to our location
-            theirWepon.transform.position = transform.position;
-            theirWepon.transform.rotation = transform.rotation;
-            // Parent it to us, so it moves with us
-            theirWepon.transform.SetParent(transform);
-            // Select the currently picked wepon
-            ChangeWeponIndex(wepons.Count - 1);
-        }
+        // WeponBehaviour theirWepon = other.GetComponentInParent<WeponBehaviour>();
+        // if (theirWepon != null)
+        // {
+        //     // Add it to our internal list
+        //     wepons.Add(theirWepon);
+        //     // Move it to our location
+        //     theirWepon.transform.position = transform.position;
+        //     theirWepon.transform.rotation = transform.rotation;
+        //     // Parent it to us, so it moves with us
+        //     theirWepon.transform.SetParent(transform);
+        //     // Select the currently picked wepon
+        //     ChangeWeponIndex(wepons.Count - 1);
+        // }
     }
 }

@@ -50,7 +50,7 @@ public class GuardBehaviour : EnemyBehaviour
             {
                 myLight.color = Color.red;
                 ChasePlayer();
-                GameObject playerRef = References.thePlayer;
+                PlayerBehaviour playerRef = References.thePlayer;
                 if (CanSeePlayer()) 
                 {
                     secondsSeeingPlayer += Time.deltaTime;
@@ -102,7 +102,7 @@ public class GuardBehaviour : EnemyBehaviour
 
     protected bool CanSeePlayer()
     {
-        GameObject player = References.thePlayer;
+        PlayerBehaviour player = References.thePlayer;
         if (player == null)
         {
             return false;
@@ -124,9 +124,15 @@ public class GuardBehaviour : EnemyBehaviour
             // The ray hit no walls before it reached player
             return true;
         }
+    }
 
-
-
+    public void KnockoutAttempt()
+    {
+        if (References.levelManager.alarmSounded == false)
+        {
+            HealthSystem myHealthSystem = GetComponent<HealthSystem>();
+            myHealthSystem.KillMe();
+        }
     }
 }
 

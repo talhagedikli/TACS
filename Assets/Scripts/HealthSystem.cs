@@ -62,5 +62,10 @@ public class HealthSystem : MonoBehaviour
             Destroy(myHealthBar.gameObject);    
         }
     }
+
+    public void KillMe()
+    {
+        TakeDamage(currentHealth);
+    }
     #endregion
 }

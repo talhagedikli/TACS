@@ -11,7 +11,7 @@ public class SwarmerBehaviour : EnemyBehaviour
     {
         GameObject theirGameObject = other.gameObject;
 
-        if (theirGameObject == References.thePlayer)
+        if (theirGameObject == References.thePlayer.gameObject)
         {
             // Create an explosion - this will hurt the player
             Instantiate(explosionPrefab, transform.position, transform.rotation);

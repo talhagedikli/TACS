@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2362748515105519842}
   - component: {fileID: 2362748515105519845}
   - component: {fileID: 4067592072466158953}
-  - component: {fileID: 2381991010493485099}
+  - component: {fileID: 6558465750599495062}
+  - component: {fileID: 2888994273114932081}
   m_Layer: 8
   m_Name: Guard
   m_TagString: Untagged
@@ -81,8 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  ourRigidbody: {fileID: 0}
-  navAgent: {fileID: 0}
+  ourRigidbody: {fileID: 2362748515105519842}
+  navAgent: {fileID: 6558465750599495062}
   visionRange: 10
   visionConeAngle: 35
   alerted: 0
@@ -90,7 +91,7 @@ MonoBehaviour:
   turnSpeed: 1
   myWepon: {fileID: 677586114544568196}
   reactionTime: 0.5
---- !u!195 &2381991010493485099
+--- !u!195 &6558465750599495062
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,6 +113,34 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2888994273114932081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362748515105519847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c072c42038331fb44a4cb05a886fccef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whenUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4067592072466158953}
+        m_TargetAssemblyTypeName: GuardBehaviour, Assembly-CSharp
+        m_MethodName: KnockoutAttempt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  canBeReused: 0
 --- !u!1 &2362748515347234184
 GameObject:
   m_ObjectHideFlags: 0

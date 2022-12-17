@@ -55,4 +55,17 @@ public class WeponBehaviour : MonoBehaviour
             }
         }
     }
+
+    public void BePickedUpByPlayer()
+    {
+            // Add it to player's internal list
+            References.thePlayer.wepons.Add(this);
+            // Move it to player location
+            transform.position = References.thePlayer.transform.position;
+            transform.rotation = References.thePlayer.transform.rotation;
+            // Parent it to us, so it moves with us
+            transform.SetParent(References.thePlayer.transform);
+            // Select the currently picked wepon
+            References.thePlayer.SelectLatestWepon();
+    }
 }

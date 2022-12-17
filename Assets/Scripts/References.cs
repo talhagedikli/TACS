@@ -5,10 +5,11 @@ using UnityEngine;
 public static class References
 {
     // It will set to actual player when the game starts
-    public static GameObject thePlayer;
+    public static PlayerBehaviour thePlayer;
     public static CanvasBehaviour canvas;
     public static List<EnemySpawner> spawners = new List<EnemySpawner>();
     public static List<EnemyBehaviour> allEnemies = new List<EnemyBehaviour>();
+    public static List<Useable> usables = new List<Useable>();
     public static ScreenShake screenShake;
     public static LevelManager levelManager;
     public static float maxDistanceInALevel = 1000;

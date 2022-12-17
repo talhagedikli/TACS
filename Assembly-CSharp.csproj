@@ -50,11 +50,13 @@
      <Compile Include="Assets\Scripts\BulletBehaviour.cs" />
      <Compile Include="Assets\OneShotSound.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
+     <Compile Include="Assets\SwarmerBehaviour.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\GuardBehaviour.cs" />
      <Compile Include="Assets\RailgunBeam.cs" />
+     <Compile Include="Assets\Useable.cs" />
      <Compile Include="Assets\DeathEffect.cs" />
-     <Compile Include="Assets\SwarmerBehaviour.cs" />
+     <Compile Include="Assets\AntiqueBehaviour.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
