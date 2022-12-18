@@ -10,8 +10,10 @@ public class SwarmerBehaviour : EnemyBehaviour
     protected void OnCollisionEnter(Collision other) 
     {
         GameObject theirGameObject = other.gameObject;
+        PlayerBehaviour possiblePlayer = theirGameObject.GetComponent<PlayerBehaviour>();
 
-        if (theirGameObject == References.thePlayer.gameObject)
+
+        if (possiblePlayer == References.thePlayer)
         {
             // Create an explosion - this will hurt the player
             Instantiate(explosionPrefab, transform.position, transform.rotation);

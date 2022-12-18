@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // So it's a good place for gameplay critical things
     private void FixedUpdate() 
     {
-        if (References.levelManager.alarmSounded && enemiesToSpawn > 0)
+        if (References.alarmManager.AlarmHasSounded() && enemiesToSpawn > 0)
         {
             secondsSinceLastSpawn += Time.fixedDeltaTime;
             if (secondsSinceLastSpawn >= secondsBetweenSpawns)

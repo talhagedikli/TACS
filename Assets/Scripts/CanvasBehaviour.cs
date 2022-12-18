@@ -5,12 +5,16 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
+
 public class CanvasBehaviour : MonoBehaviour
 {
     public SceneAsset firstScene;
     public GameObject mainMenu;
     public GameObject creditsMenu;
     public GameObject currentMenu;
+
+    public TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     // Awake happens before start

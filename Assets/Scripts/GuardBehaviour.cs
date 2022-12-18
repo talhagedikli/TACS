@@ -35,7 +35,7 @@ public class GuardBehaviour : EnemyBehaviour
     // Update is called once per frame
     protected override void Update()
     {
-        if (References.levelManager.alarmSounded)
+        if (References.alarmManager.AlarmHasSounded())
         {
             alerted = true;
         }
@@ -84,7 +84,7 @@ public class GuardBehaviour : EnemyBehaviour
                         {
                             // First time we see the player
                             alerted = true;
-                            References.levelManager.alarmSounded = true;
+                            References.alarmManager.SoundTheAlarm();
                         }
                     }
                     
@@ -128,10 +128,11 @@ public class GuardBehaviour : EnemyBehaviour
 
     public void KnockoutAttempt()
     {
-        if (References.levelManager.alarmSounded == false)
+        if (References.alarmManager.AlarmHasSounded() == false)
         {
             HealthSystem myHealthSystem = GetComponent<HealthSystem>();
             myHealthSystem.KillMe();
+            References.alarmManager.RaiseAlertLevel();
         }
     }
 }

@@ -22,8 +22,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        References.alarmManager.SetUpLevel(3);
         showDeathMenu = false;
-        alarmSounded = false;
         secondsBeforeNextLevel = graceTimeAtEndOfLevel;
     }
 

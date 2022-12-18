@@ -13,6 +13,7 @@ public static class References
     public static ScreenShake screenShake;
     public static LevelManager levelManager;
     public static float maxDistanceInALevel = 1000;
+    public static AlarmManager alarmManager;
 
     public static List<NavPoint> navPoints = new List<NavPoint>();
     // We could do also: LayerMask.GetMask("walls", "enemies" ...); 

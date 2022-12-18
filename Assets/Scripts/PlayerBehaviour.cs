@@ -10,6 +10,8 @@ public class PlayerBehaviour : MonoBehaviour
     public List<WeponBehaviour> wepons = new List<WeponBehaviour>();
     public int selectedWeponIndex;
     private Rigidbody ourRigidbody;
+
+    public int score;
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,12 @@ public class PlayerBehaviour : MonoBehaviour
         References.thePlayer = this;
         ourRigidbody = GetComponent<Rigidbody>();
         selectedWeponIndex = 0;
+    }
+
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
+        References.canvas.scoreText.text = score.ToString();
     }
 
     // Update is called once per frame

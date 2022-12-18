@@ -38,7 +38,7 @@ public class WeponBehaviour : MonoBehaviour
             // because we move camera, it looks like we are going forwards
             References.screenShake.joltVector = transform.forward * kickAmount;
             // Ready to fire
-            References.levelManager.alarmSounded = true;
+            References.alarmManager.SoundTheAlarm();
             for (int i = 0; i < numberOfProjectiles; i++)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation);
@@ -67,5 +67,6 @@ public class WeponBehaviour : MonoBehaviour
             transform.SetParent(References.thePlayer.transform);
             // Select the currently picked wepon
             References.thePlayer.SelectLatestWepon();
+        References.alarmManager.RaiseAlertLevel();
     }
 }
