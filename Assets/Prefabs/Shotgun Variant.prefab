@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d7d68b78f29873b48be2c2ce38cb29a5, type: 2}
     - target: {fileID: 3881492936468233177, guid: c8267dc425f047e48814a9f347338aee, type: 3}
       propertyPath: m_Name
-      value: Shotgun
+      value: Shotgun Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3881492936468233178, guid: c8267dc425f047e48814a9f347338aee, type: 3}
       propertyPath: m_RootOrder
@@ -190,6 +190,10 @@ PrefabInstance:
     - target: {fileID: 3881492936468233179, guid: c8267dc425f047e48814a9f347338aee, type: 3}
       propertyPath: secondsBetweenShoots
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337097926093935618, guid: c8267dc425f047e48814a9f347338aee, type: 3}
+      propertyPath: displayName
+      value: Shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8267dc425f047e48814a9f347338aee, type: 3}

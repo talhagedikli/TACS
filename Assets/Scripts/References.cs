@@ -10,6 +10,7 @@ public static class References
     public static List<EnemySpawner> spawners = new List<EnemySpawner>();
     public static List<EnemyBehaviour> allEnemies = new List<EnemyBehaviour>();
     public static List<Useable> usables = new List<Useable>();
+    public static List<Plinth> plinths = new List<Plinth>();
     public static ScreenShake screenShake;
     public static LevelManager levelManager;
     public static float maxDistanceInALevel = 1000;
