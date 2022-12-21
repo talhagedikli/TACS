@@ -22,7 +22,7 @@ public class GuardBehaviour : EnemyBehaviour
         base.Start();
         alerted = false;
 
-        GoToRandomNavPoint();
+        // GoToRandomNavPoint();
         secondsSeeingPlayer = 0;
 
     }

@@ -26,7 +26,7 @@ public class LevelGenerator : MonoBehaviour
         {
             // Pick a random type of thing 
             int randomThingIndex = Random.Range(0, thingsToPutOnPlinths.Count);
-            GameObject randomThingType = possibleChunkPrefabs[randomThingIndex];
+            GameObject randomThingType = thingsToPutOnPlinths[randomThingIndex];
             // Instantiate one of these
             GameObject newThing = Instantiate(randomThingType);
             // Assign it to the plinth
