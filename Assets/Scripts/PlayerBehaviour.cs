@@ -12,11 +12,14 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody ourRigidbody;
 
     public int score;
+    private void Awake() 
+    {
+        References.thePlayer = this;
+    }
     
     // Start is called before the first frame update
     void Start()
     {
-        References.thePlayer = this;
         ourRigidbody = GetComponent<Rigidbody>();
         selectedWeponIndex = 0;
     }

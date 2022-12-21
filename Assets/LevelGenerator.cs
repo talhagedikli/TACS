@@ -7,8 +7,11 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> possibleChunkPrefabs;
     public List<GameObject> weponPrefabs;
     public GameObject antiquePrefab;
+    public GameObject guardPrefab;
 
     public float fractionOfPlinthsToHaveAntiques;
+    public int numofGuardsToCreate;
+    public int numofSpawnersToCreate;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,13 +49,42 @@ public class LevelGenerator : MonoBehaviour
                 thingToCreate = weponPrefabs[randomThingIndex];
             }
             numofThingsToPlace--;
-            
+
             // Instantiate one of those
             GameObject newThing = Instantiate(thingToCreate);
 
             // Assign it to this plinth
             plinth.AssignItem(newThing);
         }
+
+        List<NavPoint> possibleSpots = new List<NavPoint>();
+        float minDistanceFromPlayer = 12;
+        foreach (NavPoint nav in References.navPoints)
+        {
+            // Is it far enough from the player
+            if (Vector3.Distance(nav.transform.position, References.thePlayer.transform.position) >= minDistanceFromPlayer)
+            {
+                possibleSpots.Add(nav);
+            }
+        }
+
+        for (int i = 0; i < numofGuardsToCreate; i++)
+        {
+            if (possibleSpots.Count <= 0) { break; }
+            int randomIndex = Random.Range(0, possibleSpots.Count);
+            NavPoint spotToSpawnAt = possibleSpots[randomIndex];
+            Instantiate(guardPrefab, spotToSpawnAt.transform.position, Quaternion.identity);
+            possibleSpots.Remove(spotToSpawnAt);
+        }
+
+        while (References.spawners.Count > numofSpawnersToCreate)
+        {
+            int randomIndex = Random.Range(0, References.spawners.Count);
+            Destroy(References.spawners[randomIndex].gameObject);
+        }
+
+        
+
     }
 
     // Update is called once per frame

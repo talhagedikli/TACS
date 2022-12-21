@@ -8,6 +8,8 @@ public class Plinth : MonoBehaviour
     Useable myUseable;
     public TextMeshProUGUI myLabel;
     public Transform spotForItem;
+    public GameObject cage;
+    public float secondsToLock;
 
     private void OnEnable() 
     {
@@ -23,5 +25,22 @@ public class Plinth : MonoBehaviour
         myUseable.transform.position = spotForItem.transform.position;
         myUseable.transform.rotation = spotForItem.transform.rotation;
         myLabel.text = myUseable.displayName;
+    }
+
+    private void Update() {
+        if (References.alarmManager.AlarmHasSounded() && secondsToLock > 0)
+        {
+            secondsToLock -= Time.deltaTime;
+            if (secondsToLock <= 0)
+            {
+                cage.SetActive(true);
+                myLabel.text = "ALARM";
+                // If our object stil exist, and the player hasn't taken it yet
+                if (myUseable != null && myLabel.enabled)
+                {
+                    Destroy(myUseable.gameObject);
+                }
+            }
+        }
     }
 }
