@@ -5,7 +5,10 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public List<GameObject> possibleChunkPrefabs;
-    public List<GameObject> thingsToPutOnPlinths;
+    public List<GameObject> weponPrefabs;
+    public GameObject antiquePrefab;
+
+    public float fractionOfPlinthsToHaveAntiques;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +25,33 @@ public class LevelGenerator : MonoBehaviour
 
         }
 
+        int numofThingsToPlace = References.plinths.Count;
+        int numofAntiquesToPlace = Mathf.RoundToInt(numofThingsToPlace * fractionOfPlinthsToHaveAntiques);
+
         foreach (Plinth plinth in References.plinths)
         {
-            // Pick a random type of thing 
-            int randomThingIndex = Random.Range(0, thingsToPutOnPlinths.Count);
-            GameObject randomThingType = thingsToPutOnPlinths[randomThingIndex];
-            // Instantiate one of these
-            GameObject newThing = Instantiate(randomThingType);
-            // Assign it to the plinth
+            GameObject thingToCreate;
+            float chanceOfAntique = numofAntiquesToPlace / numofThingsToPlace;
+            if (Random.value < chanceOfAntique)
+            {
+                // Place an antique
+                thingToCreate = antiquePrefab;
+                numofAntiquesToPlace--;
+            }
+            else
+            {
+                // Place a wepon
+                // Pick a random type of thing 
+                int randomThingIndex = Random.Range(0, weponPrefabs.Count);
+                thingToCreate = weponPrefabs[randomThingIndex];
+            }
+            numofThingsToPlace--;
+            
+            // Instantiate one of those
+            GameObject newThing = Instantiate(thingToCreate);
+
+            // Assign it to this plinth
             plinth.AssignItem(newThing);
-            // thingsToPutOnPlinths.Remove(randomThingType);
         }
     }
 

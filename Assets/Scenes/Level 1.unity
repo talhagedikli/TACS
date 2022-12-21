@@ -411,7 +411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &758617302
 PrefabInstance:
@@ -990,7 +990,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2362748515105519844, guid: 8bc239d9643a3dc4086703394ff46a3d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2362748515105519844, guid: 8bc239d9643a3dc4086703394ff46a3d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2362748515105519847, guid: 8bc239d9643a3dc4086703394ff46a3d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc239d9643a3dc4086703394ff46a3d, type: 3}
@@ -1319,13 +1319,12 @@ MonoBehaviour:
   - {fileID: 3307943803452294709, guid: cbe888fa2ba89db409768e85eac6a437, type: 3}
   - {fileID: 6889752341831110998}
   - {fileID: 8224913267851442798, guid: ea6deb80e18951a4aab2cf28b0927e13, type: 3}
-  thingsToPutOnPlinths:
+  weponPrefabs:
   - {fileID: 464803561741114240, guid: eb3adecba3b7bf34b8be97decf9cc5b4, type: 3}
   - {fileID: 1939289274818897711, guid: 736f00d190a38f94eae9c860fb3a6c56, type: 3}
   - {fileID: 4674928455194266636, guid: f9471bed4438a204393c4f6e70005377, type: 3}
-  - {fileID: 6285644358926437248, guid: 91ee2ba9c6bc5f340bb5cad5e9c2372b, type: 3}
-  - {fileID: 6285644358926437248, guid: 91ee2ba9c6bc5f340bb5cad5e9c2372b, type: 3}
-  - {fileID: 6285644358926437248, guid: 91ee2ba9c6bc5f340bb5cad5e9c2372b, type: 3}
+  antiquePrefab: {fileID: 6285644358926437248, guid: 91ee2ba9c6bc5f340bb5cad5e9c2372b, type: 3}
+  fractionOfPlinthsToHaveAntiques: 0.5
 --- !u!1001 &2126746913
 PrefabInstance:
   m_ObjectHideFlags: 0
